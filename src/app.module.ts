@@ -1,14 +1,19 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GoalsModule } from './goals/goals.module';
-import { ChecksModule } from './checks/checks.module';
-import { ChecksModule } from './modules/checks/checks.module';
+import { ChecksModule  } from './modules/checks/checks.module';
 import { GoalsModule } from './modules/goals/goals.module';
+import { PrismaService } from './prisma.service';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
   imports: [GoalsModule, ChecksModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService, 
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
 })
 export class AppModule {}

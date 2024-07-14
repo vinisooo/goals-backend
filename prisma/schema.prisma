@@ -12,3 +12,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Goal {
+  id            Int     @id   @default(autoincrement())
+  name          String
+  description   String
+  percentage    Int?
+  amount        Float?
+  target_amount Float
+  checks        Check[]
+}
+
+model Check {
+  id        Int     @id   @default(autoincrement())
+  name      String
+  checked   Boolean
+  goal      Goal    @relation(fields: [goal_id], references: [id])
+  goal_id   Int
+}
