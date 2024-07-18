@@ -20,6 +20,7 @@ model Goal {
   percentage    Int?
   amount        Float?
   target_amount Float
+  image_url     String
   checks        Check[]
 }
 

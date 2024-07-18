@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { Type } from "class-transformer";
-import { IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsBase64, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
 import { CheckDto } from "src/modules/checks/dto/checks.dao";
 import { isStringObject } from "util/types";
 
@@ -23,6 +23,9 @@ export class GoalDto {
     @IsNumber()
     @IsOptional()
     amount: number
+
+    @IsString()
+    image_url: string
 
     @IsNumber()
     target_amount: number
