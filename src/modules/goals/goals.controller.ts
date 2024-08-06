@@ -18,7 +18,9 @@ export class GoalsController {
         if(!imageUrl) {
             throw new BadRequestException('Invalid image_url')
         }
-
+        
+        body.image_url = imageUrl
+        console.log('body: ', body)
         const data = body.toGoalCreateInput()
         const createdGoal = await this.goalsService.createGoal(data)
         return {...createdGoal, image_url: imageUrl}

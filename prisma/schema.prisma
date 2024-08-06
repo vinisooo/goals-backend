@@ -20,8 +20,10 @@ model Goal {
   percentage    Int?
   amount        Float?
   target_amount Float
-  image_url     String
+  image_url     String  @default("https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg")
   checks        Check[]
+
+  @@map(name: "goal")
 }
 
 model Check {
@@ -30,4 +32,6 @@ model Check {
   checked   Boolean
   goal      Goal    @relation(fields: [goal_id], references: [id])
   goal_id   Int
+
+  @@map(name: "check")
 }

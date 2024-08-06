@@ -39,7 +39,8 @@ export class GoalDto {
             percentage: 0,
             amount: this.amount,
             target_amount: this.target_amount,
-            checks: this.checks
+            checks: this.checks,
+            image_url: this.image_url
         }
     }
 }

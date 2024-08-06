@@ -16,6 +16,7 @@ export class GoalsService {
             }
         } : undefined;
 
+        console.log('data: ', data)
         const createdGoal = await this.prisma.goal.create({
             data: {
                 ...data,
